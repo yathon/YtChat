@@ -1,0 +1,444 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 1rem;
+	line-height: 1.2rem;
+/*	overflow: -moz-hidden-unscrollable;*/
+/*	-ms-overflow-style: none;*/
+}
+body {
+	background-color: rgba(52,53,65,1);
+	height: 100%;
+	width: 100%;
+}
+a {
+	text-decoration-line: none;
+	color: #333;
+}
+p {
+	white-space: break-spaces;
+	word-break: break-all;
+}
+pre {
+	margin: 10px 0;
+	width: 100%;
+	min-width: 100%;
+	border-radius: 6px;
+}
+code {
+	width: 100%;
+	min-width: 100%;
+}
+/* 整个滚动条（包含横向和纵向）*/
+::-webkit-scrollbar {
+	width: 6px;
+/*	display: none;*/
+}
+/* 滚动条轨道部分 */
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+/* 滚动条没有滑块的轨道部分 */
+::-webkit-scrollbar-track-piece {
+}
+/* 滚动条滑块部分 */
+::-webkit-scrollbar-thumb {
+	border-radius: inherit;
+	background-color: rgba(144, 147, 153, 0.3);
+	-webkit-transition: 0.3s background-color;
+	transition: 0.3s background-color;
+}
+::-webkit-scrollbar-thumb:hover {
+	backgound-color: #888;
+}
+/* 滚动条上下左右按钮 */
+::-webkit-scrollbar-button {
+}
+/* 横向滚动条和纵向滚动条交汇处小方块 */
+::-webkit-scrollbar-corner {
+}
+.hljs-lang {
+	background: #333;
+	text-align: left;
+	color: #0f0;
+	padding: 5px 0 5px 20px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.hljs-ln-numbers {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	text-align: center;
+	color: #ccc;
+	border-right: 1px solid #CCC;
+	vertical-align: top;
+	padding-right: 5px !important;
+}
+.hljs-ln-code {
+	padding-left: 15px !important;
+}
+.menubar {
+	display: none;
+	/*display: inline-flex;*/
+	position: fixed;
+	flex-direction: row;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 32px;
+	padding: 3px 20px;
+	z-index: 998;
+	background-color: #202123;
+	color: #fff;
+}
+.menubar .menu-title {
+	width: 100%;
+	text-align: center;
+	padding: 0 15%;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.menu-title #menuTitle {
+	max-width: 50%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.menubar svg{
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	margin: 0 10px;
+}
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: inline-flex;
+	/*display: none;*/
+	flex-direction: column;
+	background-color: #202123;
+	color: #fff;
+	width: 200px;
+	height: 100%;
+	z-index: 998;
+}
+.sidebar svg {
+	padding-top: 8px;
+	margin-right: 3px;
+	height: 22px;
+	width: 22px;
+}
+.sidebar-item {
+	text-align: center;
+	vertical-align: middle;
+}
+.sidebar-item .sidebar-a {
+	margin: 10px 20px;
+	padding: 2px 8px 6px 0;
+	border-radius: 6px;
+}
+.sidebar-item .sidebar-a:hover {
+	background-color: rgba(52,53,65,1);
+}
+.sidebar-item span {
+	cursor: pointer;
+}
+.sidebar .new-chat {
+	border-bottom: 1px solid #d9d9e3;
+	border-color: hsla(0,0%,100%,.2);
+	z-index: 333;
+}
+.sidebar .title-list {
+	width: 200px;
+	max-height: calc(100% - 275px);
+	display: flex;
+	flex-direction: column-reverse;
+	/*vertical-align: top;*/
+	border: none;
+	padding: 15px 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index: 222;
+}
+.title-list .sidebar-a {
+	text-align: left;
+	margin: 3px 20px;
+	padding: 2px 8px 6px 6px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.title-list .a-actived {
+	background-color: rgba(52,53,65,0.6);
+}
+.title-list .sidebar-a span {
+	max-width: 150px !important;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.sidebar .options {
+	position: fixed;
+	bottom: 20px;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: none;
+	height: 200px;
+	padding-top: 10px;
+	border-top: 1px solid #d9d9e3;
+	border-color: hsla(0,0%,100%,.2);
+	z-index: 333;
+}
+.options .sidebar-a {
+	text-align: left;
+	margin: 3px 20px;
+	padding: 2px 8px 6px 0;
+}
+.chat-container {
+	position: fixed;
+	top: 0;
+	left: 200px;
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 200px);
+	height: 100%;
+}
+.chat-list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	padding-bottom: 180px;
+}
+.chat-list::-webkit-scrollbar {
+	height: 100% + 180px;
+}
+.chat-item {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	min-width: 100%;
+	height: auto;
+	padding: 14px 20%;
+}
+.chat-list .user {
+	color: rgba(236,236,241,1);
+	background-color: rgba(52,53,65,1);
+}
+.chat-list .bot {
+	color: rgba(236,236,241,1);
+	background-color: rgba(68,70,84,1);
+}
+.chat-item .avatar {
+	height: 24px !important;
+	width: 24px !important;
+	margin: 10px;
+	border-radius: 15%;
+}
+.user .avatar {
+	background-color: rgba(178,43,32,1);
+}
+.bot .avatar {
+	background-color: rgb(16, 163, 127);
+}
+.chat-item .content {
+	padding: 10px;
+	line-height: 1.3rem;
+	max-width: 95%;
+}
+.regenerate {
+	display: none;
+	position: fixed;
+	bottom: 115px;
+	width: 100%;
+	text-align: center;
+}
+.regenerate button {
+	width: 150px;
+	height: 30px;
+	margin: 0 85px 0 0;
+	padding: 0;
+	color: rgba(217,217,227,1);
+	background-color: rgba(52,53,65,1);
+	border: 1px solid rgba(86,88,105,1);
+	border-radius: 8px;
+	cursor: pointer;
+	z-index: 990;
+}
+.regenerate button:hover {
+	background-color: rgba(64,65,79,1);
+}
+.regenerate svg {
+	width: 20px;
+	height: 20px;
+	padding: 8px 6px 0 0;
+}
+.regenerate label {
+	font-size: 0.826rem;
+	cursor: pointer;
+}
+.chat-input {
+	position: fixed;
+	bottom: 60px;
+	width: calc(100% - 170px);
+	text-align: center;
+	padding: 0 20%;
+}
+.chat-input textarea {
+	width: calc(100% - 2px);
+	min-width: calc(100% - 2px);
+	max-width: calc(100% - 2px);
+	height: 40px;
+	min-height: 40px;
+	max-height: 30vh;
+	padding: 0.5rem 45px 0.5rem 0.5rem;
+	border-radius: 8px;
+	background-color: rgba(52,53,65,1);
+	color: rgba(255,255,255,1);
+}
+.chat-input button {
+	position: absolute;
+	bottom: 6px;
+	right: calc(20% + 50px);
+	height: 30px;
+	width: 30px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: rgba(52,53,65,1);
+	border-radius: 8px;
+	z-index: 990;
+}
+.chat-input button svg {
+	height: 100%;
+	width: 100%;
+	color: rgba(142,142,160,1);
+}
+
+#settingsDiv {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	width: 60%;
+	max-width: 666px;
+	min-width: 222px;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	z-index: 999;
+}
+#settingsDiv h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+#settingsDiv .settings-checkbox {
+	display: flex;
+	margin: auto 30px 30px 30px;
+}
+#settingsDiv .settings-checkbox div {
+	flex: 1;
+}
+#settingsDiv .settings-apikey {
+	display: block;
+	text-align: left;
+	margin-bottom: 30px;
+}
+#settingsDiv #apikey {
+	width: calc(100% - 28px);
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+#settingsDiv .settings-role {
+	margin-bottom: 10px;
+}
+#settingsDiv .settings-role select {
+	width: 100px;
+	text-align: center;
+}
+#settingsDiv .settings-prefix {
+	display: none;
+	margin-bottom: 10px;
+}
+#settingsDiv #prefix {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	height: 30px;
+	min-height: 30px;
+	max-height: 110px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+#settingsDiv .settings-options {
+	margin-top: 30px;
+	align-items: center;
+}
+#settingsDiv button {
+	width: 60px;
+	height: 40px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+#settingsDiv button:hover {
+	background-color: #0056b3;
+}
+#settingsDiv #cancelSettings {
+	margin-left: 40px;
+	background-color: #ccc;
+}
+#settingsDiv #cancelSettings:hover {
+	background-color: #999;
+}
+
+@media (max-width: 768px) {
+	.menubar {
+		display: inline-flex;
+	}
+	.sidebar {
+		display: none;
+	}
+	.chat-container {
+		width: 100%;
+		left: 0;
+		padding-top: 40px;
+	}
+	.chat-item {
+		padding: 14px 10%;
+	}
+	.regenerate button {
+		margin: 0;
+	}
+	.chat-input {
+		width: 100%;
+		padding: 0 10%;
+	}
+	.chat-input button {
+		right: calc(10% + 2px);
+	}
+	#settingsDiv {
+		left: 5%;
+		width: 90%;
+	}
+}
